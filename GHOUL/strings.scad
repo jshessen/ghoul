@@ -40,12 +40,11 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 
 /*#################################################################
-## Section: Functions - Strings
-*/
+## Functions
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-/// BOSL Documentation Format
 // Section: String deconstruction
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+*/
 
 /*#######################################################
 ## Function: substr()
@@ -78,12 +77,12 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 ##
 #######################################################*/
 function substr(str="", start=0, length,     help=false) = (
-    let(length=(!is_undef(length))?length:len(str)-1)
-    (!help)
-    ?   (start <= length)
+    (help)
+    ?   help_substr()
+    :   let(length=(!is_undef(length))?length:len(str)-1)
+        (start <= length)
         ?   str(str[start],substr(str, start + 1, length))
-        :   ""
-    :   help_substr()
+        :   ""    
 );
 function substring(str,start,length,    help) = substr(str,start,length,    help);
 
@@ -125,13 +124,15 @@ function help_substr() = (
             str  = Original character string
 ##
 #######################################################*/
-function trim(str) = (
-    let(i=len(str)-1)
-    (str[0] == " ")
-    ?   trim(substr(str,1))
-    :   (str[i] == " ")
-        ?   trim(substr(str, 0, i-1))
-        :   str
+function trim(str,  help=false) = (
+    (help)
+    ?   help_trim()
+    :   let(i=len(str)-1)
+        (str[0] == " ")
+        ?   trim(substr(str,1))
+        :   (str[i] == " ")
+            ?   trim(substr(str, 0, i-1))
+            :   str
 );
 /*#######################################################
 ## Function: pad()
@@ -146,34 +147,40 @@ function trim(str) = (
 ##
 #######################################################*/
 function pad(str,length,char) = (
-    let(str=str(str))
-    let(char=(!is_undef(char))?char:" ")
-    (len(str) > length)
-    ?   str
-    :   pad(str(char,str),length,char)
+    (help)
+    ?   help_pad()
+    :   let(str=str(str))
+        let(char=(!is_undef(char))?char:" ")
+        (len(str) > length)
+        ?   str
+        :   pad(str(char,str),length,char)
 );
 function lpad(str,length,char) = pad(str,length,char);
 function rpad(str,length,char) = str(str,pad("",length-len(str),char));
 
 function toupper(str) = (
-    chr([for(i=str)
-            let(int=ord(i))
-            if(65<=int && int<=90) int //Latin Capital/Upper Letters (do nothing)
-            else if(97<=int && int<=122) int-32 //Latin Small/Lower Letters (shift)
-            else undef //Not a "letter"
-        ])
+    (help)
+    ?   help_toupper()
+    :   chr([for(i=str)
+                let(int=ord(i))
+                if(65<=int && int<=90) int //Latin Capital/Upper Letters (do nothing)
+                else if(97<=int && int<=122) int-32 //Latin Small/Lower Letters (shift)
+                else undef //Not a "letter"
+            ])
 );
 
 function tolower(str) = (
-    chr([for(i=str)
-            let(int=ord(i))
-            if(97<=int && int<=122) int //Latin Small/Lower Letters (do nothing)
-            else if(65<=int && int<=90) int+32 //Latin Capital/Upper Letters (shift)
-            else undef //Not a "letter"
-        ])
+    (help)
+    ?   help_tolower()
+    :   chr([for(i=str)
+                let(int=ord(i))
+                if(97<=int && int<=122) int //Latin Small/Lower Letters (do nothing)
+                else if(65<=int && int<=90) int+32 //Latin Capital/Upper Letters (shift)
+                else undef //Not a "letter"
+            ])
 );
 /*#######################################################
-## Function: str_to_double()
+## Function: strtod()
 ##
     Description:
         A string manipulation function that emulats the C++ strtod
@@ -187,8 +194,9 @@ function tolower(str) = (
         double (0)              = Return value
 ##
 #######################################################*/
-function str_to_double(str, i, pos=0, double=0) = (
-    let(char=str[i])
+function strtod(str, i, pos=0, double=0) = (
+    (help)
+    ?   help_strtod()    let(char=str[i])
     (char==" ") ? substr(str,1) :    // Remove leading whitespace
     let(i=(!is_undef(i)) ? i : len(str)-1)
     (i<0)
@@ -200,6 +208,6 @@ function str_to_double(str, i, pos=0, double=0) = (
             ?   str_to_double(str, i-1, pos+1, num*pow(10,pos)+double)
             :   num*double                    // Apply negative value
 );
-function strtod(str) = str_to_double(str);
+function string_to_double(str) = strtod(str);
 /*
 #################################################################*/
