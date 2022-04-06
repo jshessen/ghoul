@@ -7,9 +7,8 @@
         https://github.com/jshessen/GHOUL
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-/// BOSL Documentation Format
 // LibFile: lib.scad
-// FileSummary: Includ this file to use the library
+// FileSummary: Include this file to use the library
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 &&
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
@@ -31,4 +30,8 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 //
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 
-include <GHOUL/strings.scad>;
+
+
+
+
+use <GHOUL/strings.scad>;

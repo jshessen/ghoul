@@ -7,7 +7,6 @@
         https://github.com/jshessen/GHOUL
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-/// BOSL Documentation Format
 // LibFile: strings.scad
 //   Functions and modules that provide string manipulations and formatting
 /// Includes:
@@ -74,9 +73,10 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 //   // Returns: "efg"
 //   echo(substr("abcdefg",length=4));
 //   // Returns: "abcde"
+
+// Aliases: substring()
 ##
 #######################################################*/
-x=substr(help=true);
 function substr(str="", start=0, length,     help=false) = (
     let(length=(!is_undef(length))?length:len(str)-1)
     (!help)
@@ -85,6 +85,8 @@ function substr(str="", start=0, length,     help=false) = (
         :   ""
     :   help_substr()
 );
+function substring(str,start,length,    help) = substr(str,start,length,    help);
+
 function help_substr() = (
     let(usage=str("substr(str, [start], [length])"))
     let(prefix="// ")
@@ -107,7 +109,8 @@ function help_substr() = (
         prefix,indent,      "echo(substr(\"abcdefg\",4));",         "\n",
         prefix,indent,prefix,   "Returns: \"efg\"",                 "\n",
         prefix,indent,      "echo(substr(\"abcdefg\",length=4));",  "\n",
-        prefix,indent,prefix,   "Returns: \"abcde\"")
+        prefix,indent,prefix,   "Returns: \"abcde\"",               "\n\n",
+        prefix,         "Aliases: substring()")
     )
     echo(help_text)
     ""
