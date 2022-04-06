@@ -1,2 +1,2 @@
-# GHOST
-GHOST - Generally Helpful OpenSCAD Tools Library
+# GHOUL
+GHOUL - Generally Helpful OpenSCAD Utility Library
