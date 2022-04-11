@@ -1,16 +1,16 @@
 /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-&&  GHOUL: strings.scad
+&&  ghoul: string.scad
 
         Copyright (c) 2022, Jeff Hessenflow
         All rights reserved.
         
-        https://github.com/jshessen/GHOUL
+        https://github.com/jshessen/ghoul
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-// LibFile: strings.scad
+// LibFile: string.scad
 //   Functions and modules that provide string manipulations and formatting
-/// Includes:
-///   N/A
+// Includes:
+//   use <ghoul/string.scad>
 // FileGroup: Data Management
 // FileSummary: Common string manipulation concepts
 /// FileFootnotes: ???
@@ -41,11 +41,11 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 /*#################################################################
 ## Functions
+##
+*/
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 // Section: String deconstruction
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-*/
-
 /*#######################################################
 ## Function: substr()
 ##
@@ -119,6 +119,12 @@ function help_substr() = (
     )
     help_text
 );
+
+
+
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+// Section: String transformation
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 /*#######################################################
 ## Function: trim()
 ##
@@ -346,6 +352,12 @@ function help_tolower() = (
     )
     help_text
 );
+
+
+
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+// Section: String conversion
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 /*#######################################################
 ## Function: strtod()
 ##
