@@ -40,16 +40,18 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 
 /*#################################################################
-## Functions
-##
-*/
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-// Section: String deconstruction
+// Section: Functions
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-/*#######################################################
-## Function: substr()
-##
 */
+
+
+
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+// Subection: String deconstruction
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+/*#####################################################*/
+// Function: substr()
 /// echo(help_substr()); //==>
 // Usage:
 //   substr(str, [start], [length])
@@ -86,7 +88,6 @@ function substr(str="", start=0, length,     help=false) = (
         :   ""    
 );
 function substring(str,start,length,    help) = substr(str,start,length,    help);
-
 function help_substr() = (
     let(usage=str("substr(str, [start], [length])"))
     let(prefix="// ")
@@ -122,13 +123,12 @@ function help_substr() = (
 
 
 
+
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 // Section: String transformation
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-/*#######################################################
-## Function: trim()
-##
-*/
+/*#####################################################*/
+// Function: trim()
 /// echo(help_trim()); //==>
 // Usage:
 //   trim(str)
@@ -155,7 +155,6 @@ function trim(str,  help=false) = (
             ?   trim(substr(str, 0, i-1))
             :   str
 );
-
 function help_trim() = (
     let(usage=str("trim(str)"))
     let(prefix="// ")
@@ -178,10 +177,8 @@ function help_trim() = (
     )
     help_text
 );
-/*#######################################################
-## Function: pad()
-##
-*/
+/*#####################################################*/
+// Function: pad()
 /// echo(help_pad()); //==>
 // Usage:
 //   pad(str,length,char)
@@ -215,7 +212,6 @@ function pad(str,length,char,   help=false) = (
 );
 function lpad(str,length,char,  help) = pad(str,length,char,    help);
 function rpad(str,length,char,  help) = str(str,pad("",length-len(str),char),   help);
-
 function help_pad() = (
     let(usage=str("pad(str,length,char)"))
     let(prefix="// ")
@@ -244,10 +240,8 @@ function help_pad() = (
     )
     help_text
 );
-/*#######################################################
-## Function: toupper()
-##
-*/
+/*#####################################################*/
+// Function: toupper()
 /// echo(help_toupper()); //==>
 // Usage:
 //   toupper(str)
@@ -275,7 +269,6 @@ function toupper(str,   help=false) = (
                 else int
             ])
 );
-
 function help_toupper() = (
     let(usage=str("toupper(str)"))
     let(prefix="// ")
@@ -298,10 +291,8 @@ function help_toupper() = (
     )
     help_text
 );
-/*#######################################################
-## Function: toupper()
-##
-*/
+/*#####################################################*/
+// Function: tolower()
 /// echo(help_tolower()); //==>
 // Usage:
 //   tolower(str)
@@ -329,7 +320,6 @@ function tolower(str,   help=false) = (
                 else int
             ])
 );
-                
 function help_tolower() = (
     let(usage=str("tolower(str)"))
     let(prefix="// ")
@@ -358,10 +348,8 @@ function help_tolower() = (
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 // Section: String conversion
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-/*#######################################################
-## Function: strtod()
-##
-*/
+/*#####################################################*/
+// Function: strtod()
 /// echo(help_strtod()); //==>
 // Usage:
 //   strtod(str)
@@ -420,7 +408,6 @@ function strtod(str, i, number=0,    help=false) = (
 );
 function string_to_double(str,  help) = strtod(str, help);
 function str_to_d(str, help) = strtod(str, help);
-
 function help_strtod() = (
     let(usage=str("strtod(str)"))
     let(prefix="// ")

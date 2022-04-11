@@ -11,9 +11,9 @@
 //   Functions and modules that provide color conversions, and lookups
 // Includes:
 //   use <ghoul/color.scad
-// FileGroup: Basic Modeling
+// FileGroup: Data Management
 // FileSummary: Common color conversions and definitions
-/// FileFootnotes: STD=Included in std.scad
+/// FileFootnotes: ???
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 &&
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
@@ -47,28 +47,36 @@ include <./strings.scad>;
 
 
 /*#################################################################
-## Functions
-##
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+// Section: Functions
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 */
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-// Section: Color conversion
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-/*#######################################################
-// Function: get_color_hex()
 
+
+
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+// Subection: Color conversion
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+/*#####################################################*/
+// Function: get_color_hex()
+/// echo(help_get_color_hex()); //==>
+
+/*
 ##
 #######################################################*/
 function get_color_hex(name, array) = (
     array[search([name],extended_colors)[0]][1]
 );
-/*#######################################################
-## Function: hex2rgb()
-##
+/*#####################################################*/
+// Function: hex2rgb()
+/// echo(help_hex2rgb()); //==>
+/*
     Description:
         Returns RGV Vector from Hexidecimal Code
     Parameter(s):
         (hex)
             hex  = #RRGGBB or #Rgb
+/*
 ##
 #######################################################*/
 //echo(hex2rgb("#FFD700"));   // ECHO: [255,125,0]
@@ -85,14 +93,16 @@ function hex2rgb(hex) = (
         let(b = hex2dec(concat(hex[3],hex[3])))
         [r,g,b]
 );
-/*#######################################################
-## Function: rgb2hex()
-##
+/*#####################################################*/
+// Function: rgb2hex()
+/// echo(help_rgb2hex()); //==>
+/*
     Description:
         Returns Hexidecimal Value from RGB vector
     Parameter(s):
         (vector)
             vector  = [r,g,b]
+/*
 ##
 #######################################################*/
 function rgb2hex(vector) = (
@@ -118,6 +128,14 @@ Hue is represented as an angle of the color circle (i.e. the rainbow represented
 
 //echo(hsl2rgb(120, 100, 50));    // ECHO: [0,255,0]
 //echo(hsl2rgb(6 , 93.2, 71.4));  // ECHO: [250,128,114]
+/*#####################################################*/
+// Function: hsl2rgb()
+/// echo(help_hsl2rgb()); //==>
+/*
+
+/*
+##
+#######################################################*/
 function hsl2rgb(hue, sat, light)= (
     let(hue = ((hue % 360)+360)%360)
     let(sat = sat/100)
@@ -139,9 +157,10 @@ function hsl2rgb(hue, sat, light)= (
     
     [r,g,b]
 );
-/*#######################################################
-## Function: to_decimal()
-##
+/*#####################################################*/
+// Function: to_decimal()
+/// echo(help_to_decimal()); //==>
+/*
     Description:
         Returns Decimal "number" from a vector/string.
         Conversion is performed based upon a numerical "base".
@@ -149,6 +168,7 @@ function hsl2rgb(hue, sat, light)= (
         (v)
             string  = character based hexidecimal representation
         (base) Base is the total count of digits used to express numbers
+/*
 ##
 #######################################################*/
 function to_decimal(v, base=16,  i=0,r=0) = (
@@ -179,9 +199,10 @@ function hexidecimal_to_decimal(string) = to_decimal(string);
 function base16_to_10(string)   = hexidecimal_to_decimal(string);
 function hexTodec(string)       = hexidecimal_to_decimal(string);
 function hex2dec(string)        = hexidecimal_to_decimal(string);
-/*#######################################################
-## Function: decimal_to()
-##
+/*#####################################################*/
+// Function: decimal_to()
+/// echo(help_decimal_to()); //==>
+/*
     Description:
         Returns string representation of Decimal "number"
         Conversion is performed based upon a numerical "base".
@@ -189,6 +210,7 @@ function hex2dec(string)        = hexidecimal_to_decimal(string);
         (v)
             string  = character based hexidecimal representation
         (base) Base is the total count of digits used to express numbers
+/*
 ##
 #######################################################*/
 //echo(dec2bin(27));  // ECHO: "11011"
@@ -340,7 +362,6 @@ ILLUMINANT_LED=[["LED-B1", [0.4560,0.4078],                         2733,  "phos
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-/// BOSL Documentation Format
 // Subsection:  W3 CSS Colors
 //   CSS colors in the sRGB color space are represented by a triplet of
 //   values—red, green, and blue—identifying a point in the sRGB color space [SRGB].
