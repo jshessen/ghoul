@@ -34,4 +34,5 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 
 
-use <ghoul/strings.scad>;
+use <ghoul/string.scad>;
+use <ghoul/color.scad>;
